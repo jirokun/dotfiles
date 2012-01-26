@@ -1,0 +1,9 @@
+colorscheme murphy
+"set guifont=MS_Gothic:h11:cSHIFTJIS
+"set guifont=メイリオ:h11:cSHIFTJIS
+set guifont=IPAゴシック:h11:cSHIFTJIS
+"set printfont=MS_Gothic:h12:cSHIFTJIS
+" ウインドウの幅
+set columns=120
+" ウインドウの高さ
+set lines=40
