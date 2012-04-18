@@ -1,3 +1,12 @@
+filetype off
+
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+
+Bundle 'kchmck/vim-coffee-script'
+
+filetype plugin indent on
+
 syntax on
 
 set listchars=tab:>.
@@ -118,6 +127,7 @@ inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
 
 let g:AutoComplPop_CompleteOption = '.,w,b,k'
 
+au BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2 expandtab
