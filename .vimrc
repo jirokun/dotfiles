@@ -4,6 +4,10 @@ set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'Shougo/unite.vim'
+Bundle 'groenewege/vim-less'
+Bundle 'vim-scripts/jade.vim'
+Bundle 'motemen/git-vim'
 
 filetype plugin indent on
 
@@ -79,6 +83,14 @@ filetype indent on
 nnoremap j gj
 nnoremap k gk
 nnoremap <C-j> :bp<CR>
+" quickfix moving
+nnoremap <C-n> :cn<CR>
+nnoremap <C-p> :cp<CR>
+" Unite file buffer
+nnoremap <C-e> :Unite file buffer<CR>
+" vimgrepした後はQuickFixウィンドウを開く
+au QuickfixCmdPost grep,vimgrep copen
+
 " nmap gb :ls<CR>:buf 
 
 " sort css property (id:secondlife)
@@ -87,38 +99,6 @@ vmap gso i{:!sortcss<CR>
 
 " indent whole buffer
 noremap <F8> gg=G``
-
-" xml close tag comp
-" autocmd FileType html,xhtml,xml :inoremap </ </<C-X><C-O>
-
-" insert timestamp
-"nmap tw :exe "normal! i" . strftime("%Y-%m-%d\T%H:%M:%S+09:00")<CR>
-
-"nmap bg :BufferExplorer<CR>
-"nmap bG :FilesystemExplorerFromHere<CR>
-"nmap gb :FilesystemExplorer<CR>
-"nmap br :FuzzyFinderMru<CR>
-
-" {{{ Autocompletion using the TAB key
-
-" This function determines, wether we are on the start of the line text (then tab indents) or
-" if we want to try autocompletion
-function! InsertTabWrapper()
-	let col = col('.') - 1
-	if !col || getline('.')[col - 1] !~ '\k'
-		return "\<TAB>"
-	else
-		if pumvisible()
-			return "\<C-N>"
-		else
-			return "\<C-N>\<C-P>"
-		end
-	endif
-endfunction
-" Remap the tab key to select action with InsertTabWrapper
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-
-" }}} Autocompletion using the TAB key
 
 set iminsert=0 imsearch=0
 
@@ -132,3 +112,5 @@ au BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.coffee set tabstop=2 shiftwidth=2 expandtab filetype=coffee
+au BufNewFile,BufRead *.less set tabstop=2 shiftwidth=2 expandtab filetype=less
+au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 expandtab filetype=javascript
