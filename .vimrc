@@ -8,6 +8,7 @@ Bundle 'Shougo/unite.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'vim-scripts/jade.vim'
 Bundle 'motemen/git-vim'
+Bundle 'Shougo/vimfiler.git'
 
 filetype plugin indent on
 
@@ -86,8 +87,8 @@ nnoremap <C-j> :bp<CR>
 " quickfix moving
 nnoremap <C-n> :cn<CR>
 nnoremap <C-p> :cp<CR>
-" Unite file buffer
-nnoremap <C-e> :Unite file buffer<CR>
+" Unite buffer
+nnoremap <C-e> :Unite buffer<CR>
 " vimgrepした後はQuickFixウィンドウを開く
 au QuickfixCmdPost grep,vimgrep copen
 
