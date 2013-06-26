@@ -3,12 +3,15 @@ filetype off
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'Shougo/unite.vim'
-Bundle 'groenewege/vim-less'
-Bundle 'vim-scripts/jade.vim'
-Bundle 'motemen/git-vim'
-Bundle 'Shougo/vimfiler.git'
++set rtp+=~/dotfiles/neobundle.vim
++
++if has('vim_starting')
++  set runtimepath+=~/dotfiles/neobundle.vim
++  call neobundle#rc(expand('~/.vim/'))
++endif
++
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
 
 filetype plugin indent on
 
