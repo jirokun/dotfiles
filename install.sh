@@ -11,4 +11,5 @@ fi
 
 install $DIR/.vimrc $HOME/.vimrc
 install $DIR/.gitconfig $HOME/.gitconfig
+install $DIR/.tmux.conf $HOME/.tmux.conf
 
