@@ -1,15 +1,16 @@
 filetype off
 
-set rtp+=~/.vim/vundle.git/
-call vundle#rc()
+if has('vim_starting')
+  set nocompatible               " Be iMproved
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-+set rtp+=~/dotfiles/neobundle.vim
-+
-+if has('vim_starting')
-+  set runtimepath+=~/dotfiles/neobundle.vim
-+  call neobundle#rc(expand('~/.vim/'))
-+endif
-+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 
