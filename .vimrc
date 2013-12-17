@@ -13,6 +13,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'scrooloose/syntastic'
+
 
 filetype plugin indent on
 
@@ -89,8 +91,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <C-j> :bp<CR>
 " quickfix moving
-nnoremap <C-n> :cn<CR>
-nnoremap <C-p> :cp<CR>
+nnoremap <C-n> :lnext<CR>
+nnoremap <C-p> :lprevious<CR>
 " Unite buffer
 nnoremap <C-e> :Unite buffer<CR>
 " vimgrepした後はQuickFixウィンドウを開く
@@ -111,6 +113,10 @@ set lazyredraw
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
 
 let g:AutoComplPop_CompleteOption = '.,w,b,k'
+
+" syntasticの設定
+let g:syntastic_coffee_coffeelint_post_args = '-f /home/vagrant/s-code/coffee.json'
+let g:syntastic_always_populate_loc_list=1
 
 au BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2 expandtab
