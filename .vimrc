@@ -1,22 +1,41 @@
-filetype off
+" Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
 
 if has('vim_starting')
-  set nocompatible               " Be iMproved
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
+" Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-rails'
 
 
+call neobundle#end()
+
+" Required:
 filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 
 syntax on
 
@@ -119,7 +138,8 @@ let g:syntastic_coffee_coffeelint_post_args = '-f /home/vagrant/s-code/coffee.js
 let g:syntastic_always_populate_loc_list=1
 
 au BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-au BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufRead *.erb set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.coffee set tabstop=2 shiftwidth=2 expandtab filetype=coffee
