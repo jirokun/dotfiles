@@ -22,11 +22,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Note: You don't set neobundle setting in .gvimrc!
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'scrooloose/syntastic'
+NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-rails'
-
 
 call neobundle#end()
 
@@ -38,6 +35,31 @@ filetype plugin indent on
 NeoBundleCheck
 
 syntax on
+
+" http://blog.remora.cx/2010/12/vim-ref-with-unite.html
+""""""""""""""""""""""""""""""
+" Unit.vimの設定
+""""""""""""""""""""""""""""""
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+" バッファ一覧
+noremap <C-e> :Unite buffer<CR>
+" ファイル一覧
+" noremap <C-N> :Unite -buffer-name=file file<CR>
+" 最近使ったファイルの一覧
+noremap <C-Z> :Unite file_mru<CR>
+" sourcesを「今開いているファイルのディレクトリ」とする
+noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+""""""""""""""""""""""""""""""
 
 set listchars=tab:>.
 set list
@@ -112,8 +134,6 @@ nnoremap <C-j> :bp<CR>
 " quickfix moving
 nnoremap <C-n> :lnext<CR>
 nnoremap <C-p> :lprevious<CR>
-" Unite buffer
-nnoremap <C-e> :Unite buffer<CR>
 " vimgrepした後はQuickFixウィンドウを開く
 au QuickfixCmdPost grep,vimgrep copen
 
@@ -145,3 +165,6 @@ au BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.coffee set tabstop=2 shiftwidth=2 expandtab filetype=coffee
 au BufNewFile,BufRead *.less set tabstop=2 shiftwidth=2 expandtab filetype=less
 au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 expandtab filetype=javascript
+au BufNewFile,BufRead *.jsx set tabstop=2 shiftwidth=2 expandtab filetype=javascript
+au BufNewFile,BufRead *.ts set tabstop=2 shiftwidth=2 expandtab filetype=typescript
+au BufNewFile,BufRead *.sh set tabstop=2 shiftwidth=2 expandtab filetype=sh
