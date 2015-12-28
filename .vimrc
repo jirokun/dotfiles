@@ -61,8 +61,20 @@ au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 """"""""""""""""""""""""""""""
 
-set listchars=tab:>.
+set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
 set list
+""全角スペースをハイライト表示
+function! ZenkakuSpace()
+	highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+endfunction
+if has('syntax')
+	augroup ZenkakuSpace
+		autocmd!
+		autocmd ColorScheme	   * call ZenkakuSpace()
+		autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+	augroup END
+	call ZenkakuSpace()
+endif
 
 " ちゃんと文字書いて○とか
 set ambiwidth=double
@@ -168,3 +180,4 @@ au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 expandtab filetype=javascr
 au BufNewFile,BufRead *.jsx set tabstop=2 shiftwidth=2 expandtab filetype=javascript
 au BufNewFile,BufRead *.ts set tabstop=2 shiftwidth=2 expandtab filetype=typescript
 au BufNewFile,BufRead *.sh set tabstop=2 shiftwidth=2 expandtab filetype=sh
+au BufNewFile,BufRead *.jsp set tabstop=2 shiftwidth=2 expandtab filetype=html
