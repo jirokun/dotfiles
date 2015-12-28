@@ -36,11 +36,11 @@ end tell
 EOF
 }
 BEFORE=`get_term_bgcolor | tr -s ',' ' '`
-if [[ "$@" =~ 127.0.0.1 ]]; then
-  set_term_bgcolor255 80 0 0
-elif [[ "$@" =~ hogeserver ]]; then
-  set_term_bgcolor255 0 40 0
-fi
+#if [[ "$@" =~ rptapp ]]; then
+set_term_bgcolor255 80 0 0
+#elif [[ "$@" =~ hogeserver ]]; then
+#  set_term_bgcolor255 0 40 0
+#fi
 
 ssh $@
 
