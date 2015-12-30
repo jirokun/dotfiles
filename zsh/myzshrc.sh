@@ -13,10 +13,10 @@ function fzf-history-selection() {
 }
 
 
-alias ssh="~/.ghq/github.com/jirokun/dotfiles/.shell/ssh-host-color-for-iterm2.sh"
+alias ssh="~/.dotfiles/bin/ssh-host-color-for-iterm2.sh"
 alias ll="ls -lF"
 
 zle -N fzf-history-selection
 bindkey '^r' fzf-history-selection
 
-PATH=$PATH:~/.ghq/github.com/jirokun/dotfiles/.shell
+PATH=$PATH:~/.dotfiles/bin
