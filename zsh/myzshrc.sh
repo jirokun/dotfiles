@@ -20,3 +20,8 @@ zle -N fzf-history-selection
 bindkey '^r' fzf-history-selection
 
 PATH=$PATH:~/.dotfiles/bin
+
+# rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# node brew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
