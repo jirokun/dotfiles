@@ -1,1 +1,3 @@
-git checkout $(git branch | fzf)
+#!/bin/bash -eu
+branch=$(git branch | fzf)
+git checkout $branch
