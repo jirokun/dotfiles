@@ -36,7 +36,7 @@ NeoBundleCheck
 
 syntax on
 
-set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+set listchars=tab:>.,trail:_,extends:>,precedes:<,nbsp:%
 set list
 ""全角スペースをハイライト表示
 function! ZenkakuSpace()
