@@ -157,7 +157,9 @@ au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.coffee set tabstop=2 shiftwidth=2 expandtab filetype=coffee
 au BufNewFile,BufRead *.less set tabstop=2 shiftwidth=2 expandtab filetype=less
+au BufNewFile,BufRead *.scss set tabstop=2 shiftwidth=2 expandtab filetype=sass
 au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 expandtab filetype=javascript
+au BufNewFile,BufRead *.json set tabstop=2 shiftwidth=2 expandtab filetype=javascript
 au BufNewFile,BufRead *.jsx set tabstop=2 shiftwidth=2 expandtab filetype=javascript
 au BufNewFile,BufRead *.ts set tabstop=2 shiftwidth=2 expandtab filetype=typescript
 au BufNewFile,BufRead *.sh set tabstop=2 shiftwidth=2 expandtab filetype=sh
