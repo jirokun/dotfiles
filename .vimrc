@@ -24,6 +24,24 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'pmsorhaindo/syntastic-local-eslint.vim'
+
+let g:syntastic_javascript_checkers=['eslint']
+
+" ここから下は Syntastic のおすすめの設定
+" ref. https://github.com/scrooloose/syntastic#settings
+
+" エラー行に sign を表示
+let g:syntastic_enable_signs = 1
+" location list を常に更新
+let g:syntastic_always_populate_loc_list = 0
+" location list を常に表示
+let g:syntastic_auto_loc_list = 0
+" ファイルを開いた時にチェックを実行する
+let g:syntastic_check_on_open = 1
+" :wq で終了する時もチェックする
+let g:syntastic_check_on_wq = 0
 
 call neobundle#end()
 
@@ -158,9 +176,11 @@ au BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.coffee set tabstop=2 shiftwidth=2 expandtab filetype=coffee
 au BufNewFile,BufRead *.less set tabstop=2 shiftwidth=2 expandtab filetype=less
 au BufNewFile,BufRead *.scss set tabstop=2 shiftwidth=2 expandtab filetype=sass
+au BufNewFile,BufRead *.css set tabstop=2 shiftwidth=2 expandtab filetype=stylesheet
 au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 expandtab filetype=javascript
 au BufNewFile,BufRead *.json set tabstop=2 shiftwidth=2 expandtab filetype=javascript
 au BufNewFile,BufRead *.jsx set tabstop=2 shiftwidth=2 expandtab filetype=javascript
 au BufNewFile,BufRead *.ts set tabstop=2 shiftwidth=2 expandtab filetype=typescript
 au BufNewFile,BufRead *.sh set tabstop=2 shiftwidth=2 expandtab filetype=sh
 au BufNewFile,BufRead *.jsp set tabstop=2 shiftwidth=2 expandtab filetype=html
+au BufNewFile,BufRead *.sql set tabstop=2 shiftwidth=2 expandtab filetype=sql
