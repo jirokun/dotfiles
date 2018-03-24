@@ -1,56 +1,23 @@
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+Plug 'dracula/vim', { 'as': 'dracula' }                           " カラースキーマ
+Plug 'junegunn/vim-easy-align'                                    " テキストの縦を揃えるプラグイン
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }            " NERDTREE On-demand loading
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzfで各種の絞り込みができる
+Plug 'junegunn/fzf.vim'                                           " 上記fzfに必要な設定
+Plug 'w0rp/ale'                                                   " eslintをいい感じに実行するためのエンジン
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'pmsorhaindo/syntastic-local-eslint.vim'
-
-let g:syntastic_javascript_checkers=['eslint']
-
-" ここから下は Syntastic のおすすめの設定
-" ref. https://github.com/scrooloose/syntastic#settings
-
-" エラー行に sign を表示
-let g:syntastic_enable_signs = 1
-" location list を常に更新
-let g:syntastic_always_populate_loc_list = 0
-" location list を常に表示
-let g:syntastic_auto_loc_list = 0
-" ファイルを開いた時にチェックを実行する
-let g:syntastic_check_on_open = 1
-" :wq で終了する時もチェックする
-let g:syntastic_check_on_wq = 0
-
-call neobundle#end()
+" Initialize plugin system
+call plug#end()
 
 " Required:
 filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 
 syntax on
 
@@ -142,12 +109,6 @@ nnoremap <C-p> :lprevious<CR>
 " vimgrepした後はQuickFixウィンドウを開く
 au QuickfixCmdPost grep,vimgrep copen
 
-" nmap gb :ls<CR>:buf 
-
-" sort css property (id:secondlife)
-nmap gso vi{:!sortcss<CR>
-vmap gso i{:!sortcss<CR>
-
 " indent whole buffer
 noremap <F8> gg=G``
 
@@ -158,15 +119,7 @@ inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
 
 let g:AutoComplPop_CompleteOption = '.,w,b,k'
 
-" syntasticの設定
-let g:syntastic_coffee_coffeelint_post_args = '-f /home/vagrant/s-code/coffee.json'
-let g:syntastic_always_populate_loc_list=1
-
-" popup menuの色を変更
-hi Pmenu ctermbg=0
-hi PmenuSel ctermbg=4
-hi PmenuSbar ctermbg=2
-hi PmenuThumb ctermfg=3
+color dracula
 
 au BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
