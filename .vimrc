@@ -13,6 +13,15 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzfで各種
 Plug 'junegunn/fzf.vim'                                           " 上記fzfに必要な設定
 Plug 'w0rp/ale'                                                   " eslintをいい感じに実行するためのエンジン
 
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
 " Initialize plugin system
 call plug#end()
 
