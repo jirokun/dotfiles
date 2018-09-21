@@ -7,13 +7,16 @@ function fzf_history() {
   print -z $CMD
 }
 function fzf-history-selection() {
-  BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | fzf`
+  echo ABC
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
   CURSOR=$#BUFFER
-  zle reset-prompt
+  #BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | fzf`
+  #CURSOR=$#BUFFER
+  #zle reset-prompt
 }
 
 
-alias ssh="~/.dotfiles/bin/ssh-host-color-for-iterm2.sh"
+#alias ssh="~/.dotfiles/bin/ssh-host-color-for-iterm2.sh"
 alias ll="ls -lF"
 
 zle -N fzf-history-selection
